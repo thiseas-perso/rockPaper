@@ -50,11 +50,12 @@ function game(rounds) {
    } else return 'Draw!'
 }
 
+
 const buttons = document.querySelectorAll('button')
 
 buttons.forEach((button) => {
-   button.addEventListener('click', (e) => {
-      console.log(button.textContent.toLowerCase())
+   button.addEventListener('click', () => {
+      playRound(button.id)
    })
-})
+});
 
