@@ -20,13 +20,10 @@ function playRound(userSelection) {
 
    if (computerSelection === userSelection) {
       console.log('Draw!')
-   } else if (computerSelection === 'rock' && userSelection === 'scissors') {
-      computerScore++;
-      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
-   } else if (computerSelection === 'paper' && userSelection === 'rock') {
-      computerScore++;
-      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
-   } else if (computerSelection === 'scissors' && userSelection === 'paper') {
+   } else if (computerSelection === 'rock' && userSelection === 'scissors' ||
+      computerSelection === 'paper' && userSelection === 'rock' ||
+      computerSelection === 'scissors' && userSelection === 'paper'
+   ) {
       computerScore++;
       console.log(`You lose, ${computerSelection} beats ${userSelection}`)
    } else {
