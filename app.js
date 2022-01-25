@@ -14,6 +14,8 @@ buttons.forEach((button) => {
 
 
 const results = document.querySelector('#results')
+const finalResult = document.querySelector('#result')
+const score = document.querySelector('#score')
 
 //generate a random number between 0 and 2 and use it as an index for the CHOICES array in order to represent the computer's choice
 function computerPlay() {
@@ -22,14 +24,13 @@ function computerPlay() {
 }
 
 //declare the score at -1 instead of 0 just to make sure that the game() function works
-let userScore = -1;
-let computerScore = -1;
+let userScore = 0;
+let computerScore = 0;
 
 //one round of the game
 function playRound(userSelection) {
    userSelection = userSelection;
    let computerSelection = computerPlay();
-
 
    if (computerSelection === userSelection) {
       results.textContent = 'Draw!'
@@ -42,6 +43,16 @@ function playRound(userSelection) {
    } else {
       userScore++;
       results.textContent = `You win, ${userSelection} beats ${computerSelection}`
+   }
+
+   score.textContent = `Computer score: ${computerScore} - Your Score: ${userScore}`;
+
+   if (userScore === 3) {
+      finalResult.innerText = `You win! Computer score: ${computerScore} - Your Score: ${userScore}`;
+   }
+
+   if (computerScore === 3) {
+      finalResult.innerText = `You loose! Computer score: ${computerScore} - Your Score: ${userScore}`;
    }
 
 }
