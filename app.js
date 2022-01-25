@@ -2,6 +2,19 @@
 //these are the 3 choices that the user and computer can make
 const CHOICES = ['rock', 'paper', 'scissors'];
 
+
+
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((button) => {
+   button.addEventListener('click', () => {
+      playRound(button.id)
+   })
+});
+
+
+const results = document.querySelector('#results')
+
 //generate a random number between 0 and 2 and use it as an index for the CHOICES array in order to represent the computer's choice
 function computerPlay() {
    const random = Math.floor(Math.random() * 3);
@@ -16,22 +29,23 @@ let computerScore = -1;
 function playRound(userSelection) {
    userSelection = userSelection;
    let computerSelection = computerPlay();
-   console.log(`pc: ${computerSelection} /VS/ user: ${userSelection}`)
+
 
    if (computerSelection === userSelection) {
-      console.log('Draw!')
+      results.textContent = 'Draw!'
    } else if (computerSelection === 'rock' && userSelection === 'scissors' ||
       computerSelection === 'paper' && userSelection === 'rock' ||
       computerSelection === 'scissors' && userSelection === 'paper'
    ) {
       computerScore++;
-      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
+      results.textContent = `You lose, ${computerSelection} beats ${userSelection}`
    } else {
       userScore++;
-      console.log(`You win, ${userSelection} beats ${computerSelection}`)
+      results.textContent = `You win, ${userSelection} beats ${computerSelection}`
    }
 
 }
+
 
 //call how many rounds you want to play
 function game(rounds) {
@@ -48,11 +62,5 @@ function game(rounds) {
 }
 
 
-const buttons = document.querySelectorAll('button')
 
-buttons.forEach((button) => {
-   button.addEventListener('click', () => {
-      playRound(button.id)
-   })
-});
 
