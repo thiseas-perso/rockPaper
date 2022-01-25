@@ -13,31 +13,27 @@ let userScore = -1;
 let computerScore = -1;
 
 //one round of the game
-function playRound() {
-   let userSelection = prompt("make your choice").toLowerCase().trim();
+function playRound(userSelection) {
+   userSelection = userSelection;
    let computerSelection = computerPlay();
    console.log(`pc: ${computerSelection} /VS/ user: ${userSelection}`)
-   if (CHOICES.indexOf(userSelection) !== -1) {
-      if (computerSelection === userSelection) {
-         console.log('Draw!')
-      }
-      else if (computerSelection === 'rock' && userSelection === 'scissors') {
-         computerScore++;
-         console.log(`You lose, ${computerSelection} beats ${userSelection}`)
-      } else if (computerSelection === 'paper' && userSelection === 'rock') {
-         computerScore++;
-         console.log(`You lose, ${computerSelection} beats ${userSelection}`)
-      } else if (computerSelection === 'scissors' && userSelection === 'paper') {
-         computerScore++;
-         console.log(`You lose, ${computerSelection} beats ${userSelection}`)
-      } else {
-         userScore++;
-         console.log(`You win, ${userSelection} beats ${computerSelection}`)
-      }
+
+   if (computerSelection === userSelection) {
+      console.log('Draw!')
+   } else if (computerSelection === 'rock' && userSelection === 'scissors') {
+      computerScore++;
+      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
+   } else if (computerSelection === 'paper' && userSelection === 'rock') {
+      computerScore++;
+      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
+   } else if (computerSelection === 'scissors' && userSelection === 'paper') {
+      computerScore++;
+      console.log(`You lose, ${computerSelection} beats ${userSelection}`)
    } else {
-      alert("choose between 'rock', 'paper', 'scissors'")
-      playRound();
+      userScore++;
+      console.log(`You win, ${userSelection} beats ${computerSelection}`)
    }
+
 }
 
 //call how many rounds you want to play
@@ -53,3 +49,12 @@ function game(rounds) {
       return `You loose! your score is ${userScore}, the computer's score is ${computerScore}`
    } else return 'Draw!'
 }
+
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((button) => {
+   button.addEventListener('click', (e) => {
+      console.log(button.textContent.toLowerCase())
+   })
+})
+
